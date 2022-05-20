@@ -2,9 +2,12 @@ package com.example.memoapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import com.example.memoapp.databinding.ActivityMainBinding
 import com.example.memoapp.databinding.FragmentAddMemoListBinding
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -25,6 +28,8 @@ class MainActivity : AppCompatActivity() {
             binding.FabAddList.visibility = View.INVISIBLE
             binding.FabListAdd.isClickable = false
         }
-
+        bi.EndButton.setOnClickListener{
+            Log.i("a","おせた")
+        }
     }
 }
