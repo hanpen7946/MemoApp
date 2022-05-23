@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/EditTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/EditNumber"
         android:layout_width="128dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -46,24 +46,24 @@
         android:inputType="number"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/EndButton"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/EditTitle" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/AddButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="追加"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
+        app:layout_constraintBottom_toBottomOf="@+id/CategoryButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageButton2" />
+        app:layout_constraintTop_toTopOf="@+id/CategoryButton" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/CategoryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@android:drawable/ic_menu_help"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextNumber"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumber"
-        app:layout_constraintTop_toTopOf="@+id/editTextNumber" />
+        app:layout_constraintBottom_toBottomOf="@+id/EditNumber"
+        app:layout_constraintStart_toEndOf="@+id/EditNumber"
+        app:layout_constraintTop_toTopOf="@+id/EditNumber" />
 </androidx.constraintlayout.widget.ConstraintLayout>

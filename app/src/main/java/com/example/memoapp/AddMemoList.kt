@@ -26,16 +26,18 @@ class AddMemoList : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //フラグメントを閉じてFABを再表示する部分
         binding.EndButton.setOnClickListener{
-            Log.i("a","フラグメント閉じた")
-            //なんとかしてフラグメントとじろ 完了
+            //フラグメントを閉じる
             parentFragmentManager.beginTransaction().remove(this).commit()
-            //MainActivityのFABを取得
+
+            //MainActivityのFABを取得・再表示・活性化
             val fb = requireActivity().findViewById<FloatingActionButton>(R.id.FabAddList)
             fb.visibility = View.VISIBLE
-            //trueにはなってる
             fb.isClickable = true
-            //FABにリスナーを再設置する　
+
+            //FABにリスナーを再設置する・・・なぜかメインアクティビティで付けたリスナーが外れる　
             fb.setOnClickListener{
                 parentFragmentManager.beginTransaction().apply {
                     replace(R.id.container,AddMemoList())
@@ -46,6 +48,14 @@ class AddMemoList : Fragment() {
                 fb.isClickable = false
             }
         }
+
+        //追加ボタンを押した処理
+        binding.AddButton.setOnClickListener{
+            /*タイトルを入れないと追加できない
+              数量は入れてないと１になる
+              カテゴリも選択しないとなしになる*/
+        }
+
     }
     override fun onDestroyView() {
         super.onDestroyView()
