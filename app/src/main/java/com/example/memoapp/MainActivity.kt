@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.FabListAdd.setOnClickListener{
-            Log.i("Fabbutton","おせた")
+            Log.i("Fabbutton","FAB押した")
             supportFragmentManager.beginTransaction().apply {
                 replace(R.id.container, AddMemoList())
                 addToBackStack(null)
@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
             //ボタンの非表示と無効化
             binding.FabAddList.visibility = View.INVISIBLE
             binding.FabListAdd.isClickable = false
+
         }
 
     }
