@@ -51,6 +51,7 @@ class AddMemoList : Fragment() {
 
         //追加ボタンを押した処理
         binding.AddButton.setOnClickListener{
+
             /*タイトルを入れないと追加できない
               数量は入れてないと１になる
               カテゴリも選択しないとなしになる*/
