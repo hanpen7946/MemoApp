@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import com.example.memoapp.databinding.FragmentAddMemoListBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -13,7 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class AddMemoList : Fragment() {
     private var _binding: FragmentAddMemoListBinding? = null
     private val binding get() = _binding!!
-
+    private lateinit var memodata:MemoData
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,6 +52,19 @@ class AddMemoList : Fragment() {
 
         //追加ボタンを押した処理
         binding.AddButton.setOnClickListener{
+        if (R.id.EditTitle == null) {
+            var et:EditText = view.findViewById(R.id.EditTitle)
+            et.setHint("タイトルを入力してください")
+        } else {
+
+            //数量が入っていない場合は１になる
+            if (R.id.EditNumber == null || R.id.EditNumber == 0) {
+                memodata.number = 1
+            } else {
+                memodata.number = R.id.EditNumber
+            }
+
+        }
 
             /*タイトルを入れないと追加できない
               数量は入れてないと１になる
