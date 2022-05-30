@@ -4,4 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="AddTitleHint">メモを入力</string>
     <string name="AddQuantityHint">数量を入力</string>
+    <string name="item_sort_1">五十音順</string>
+    <string name="item_sort_2">カテゴリー順</string>
+    <string name="item_sort_3">値段順</string>
 </resources>

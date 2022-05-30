@@ -1,7 +1,9 @@
 package com.example.memoapp
 
+import android.R
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.View
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         //FABボタンのリスナー
         binding.FabAddList.setOnClickListener{
+            binding.MemoList.setSelection(binding.MemoList.count-1)
             Log.i("FAB","押せた")
             supportFragmentManager.beginTransaction().apply {
                 replace(R.id.container, AddMemoList())
@@ -53,4 +56,11 @@ class MainActivity : AppCompatActivity() {
             binding.FabListAdd.isClickable = false
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+      menuInflater.inflate(R.menu.option_menu, menu)
+      return true
     }
+
+    }
+

@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.ListView
+import com.example.memoapp.databinding.ActivityMainBinding
 import com.example.memoapp.databinding.FragmentAddMemoListBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -17,7 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class AddMemoList : Fragment() {
     private var _binding: FragmentAddMemoListBinding? = null
     private val binding get() = _binding!!
-    private lateinit var memodata:MemoData
+    private lateinit var main_binding:ActivityMainBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,6 +27,7 @@ class AddMemoList : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
        _binding = FragmentAddMemoListBinding.inflate(inflater,container,false)
+        main_binding = ActivityMainBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -35,22 +38,10 @@ class AddMemoList : Fragment() {
         binding.EndButton.setOnClickListener{
             //フラグメントを閉じる
             parentFragmentManager.beginTransaction().remove(this).commit()
-
             //MainActivityのFABを取得・再表示・活性化
             val fb = requireActivity().findViewById<FloatingActionButton>(R.id.FabAddList)
             fb.visibility = View.VISIBLE
             fb.isClickable = true
-
-            //FABにリスナーを再設置する・・・なぜかメインアクティビティで付けたリスナーが外れる　
-            fb.setOnClickListener{
-                parentFragmentManager.beginTransaction().apply {
-                    replace(R.id.container,AddMemoList())
-                    addToBackStack(null)
-                    commit()
-                }
-                fb.visibility = View.INVISIBLE
-                fb.isClickable = false
-            }
         }
 
         //追加ボタンを押した処理
