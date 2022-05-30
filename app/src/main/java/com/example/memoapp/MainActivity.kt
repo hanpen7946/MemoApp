@@ -1,6 +1,6 @@
 package com.example.memoapp
 
-import android.R
+
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         val egg = MemoData("卵", 1,R.drawable.ic_egg)
         val fish = MemoData("肉",1,R.drawable.ic_fish)
@@ -58,9 +57,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-      menuInflater.inflate(R.menu.option_menu, menu)
-      return true
+        menuInflater.inflate(R.menu.option_menu,menu)
+        return super.onCreateOptionsMenu(menu)
     }
+
+
 
     }
 
