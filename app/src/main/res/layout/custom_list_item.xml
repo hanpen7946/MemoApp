@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/MemoItem"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <CheckBox
         android:id="@+id/CheckBox"
@@ -27,18 +27,31 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/CheckBox"
-        app:layout_constraintEnd_toStartOf="@+id/Category"
+        app:layout_constraintEnd_toStartOf="@+id/Quantity"
         app:layout_constraintStart_toEndOf="@+id/CheckBox"
         app:layout_constraintTop_toTopOf="@+id/CheckBox" />
 
-    <ImageView
-        android:id="@+id/Category"
+    <TextView
+        android:id="@+id/Quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="10個"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/MemoTitle"
+        app:layout_constraintEnd_toStartOf="@+id/Price"
+        app:layout_constraintTop_toTopOf="@+id/MemoTitle" />
+
+    <TextView
+        android:id="@+id/Price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2,345円"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/Quantity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/MemoTitle"
-        app:srcCompat="@android:drawable/ic_menu_help" />
+        app:layout_constraintTop_toTopOf="@+id/Quantity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

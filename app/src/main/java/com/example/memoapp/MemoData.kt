@@ -1,7 +1,10 @@
 package com.example.memoapp
 
+import android.widget.ImageView
+
 class MemoData(
-    var title: String,
-    var number: Int,
-    var category: Int
+    var check_md: Boolean,
+    var title_md: String,
+    var quantity_md: Int,
+    var price_md: Int,
 )

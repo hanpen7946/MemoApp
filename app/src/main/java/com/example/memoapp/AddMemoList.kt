@@ -1,19 +1,16 @@
 package com.example.memoapp
 
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.ListView
 import com.example.memoapp.databinding.ActivityMainBinding
 import com.example.memoapp.databinding.FragmentAddMemoListBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.security.AccessController.getContext
 
 
 class AddMemoList : Fragment() {
@@ -47,27 +44,30 @@ class AddMemoList : Fragment() {
         //追加ボタンを押した処理
         binding.AddButton.setOnClickListener{
             val et:EditText = view.findViewById(R.id.EditTitle)
-            val en:EditText = view.findViewById(R.id.EditNumber)
-            val ib:ImageButton = view.findViewById(R.id.CategoryButton)
+            val eq:EditText = view.findViewById(R.id.EditQuantity)
             //処理用変数
-            var number:Int
-            var category:ImageView = ib
+            var quantity_am:Int
+
         //追加されないパターン
         if (et.text.isEmpty()) {
             et.setHint("タイトルを入力してください")
+
         //追加されるパターン
         } else {
-            if (en.text.isEmpty()){
-                number = 1
+            var title_am:String = et.text.toString()
+            if (eq.text.isEmpty()){
+                quantity_am= 1
             } else{
-                number = en.text.toString().toInt()
+                quantity_am = eq.text.toString().toInt()
             }
 
+            val md = MemoData(false,title_am,quantity_am,0)
+            //MainActivity().AddMemo(md)
+            var nd:MutableList<MemoData> = mutableListOf(md)
+            var list:ListView = main_binding.MemoList
+            var mCustomAdapter = CustomAdapter(requireContext(),nd)
+            list.adapter = mCustomAdapter
         }
-
-            /*タイトルを入れないと追加できない
-              数量は入れてないと１になる
-              カテゴリも選択しないとなしになる*/
         }
 
     }
