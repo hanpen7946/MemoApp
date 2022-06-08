@@ -1,23 +1,42 @@
 package com.example.memoapp
 
+
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ListView
 import com.example.memoapp.databinding.ActivityMainBinding
 import com.example.memoapp.databinding.FragmentAddMemoListBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import java.security.AccessController.getContext
+
 
 
 class AddMemoList : Fragment() {
     private var _binding: FragmentAddMemoListBinding? = null
     private val binding get() = _binding!!
     private lateinit var main_binding:ActivityMainBinding
+    private lateinit var listener: CallbackListener
 
+    interface CallbackListener {
+        fun updateMemoList(memo:MemoData)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            //MainActivity（呼び出し元）をListenerに変換する
+            val mainActivity: MainActivity= activity as MainActivity
+            listener = mainActivity
+        } catch (e: ClassCastException) {
+            throw ClassCastException((context.toString() +
+                    " must implement NoticeDialogListener"))
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,6 +52,8 @@ class AddMemoList : Fragment() {
 
         //フラグメントを閉じてFABを再表示する部分
         binding.EndButton.setOnClickListener{
+            val inputManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputManager.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
             //フラグメントを閉じる
             parentFragmentManager.beginTransaction().remove(this).commit()
             //MainActivityのFABを取得・再表示・活性化
@@ -60,13 +81,9 @@ class AddMemoList : Fragment() {
             } else{
                 quantity_am = eq.text.toString().toInt()
             }
-
+            //一つのメモ要素を作成
             val md = MemoData(false,title_am,quantity_am,0)
-            //MainActivity().AddMemo(md)
-            var nd:MutableList<MemoData> = mutableListOf(md)
-            var list:ListView = main_binding.MemoList
-            var mCustomAdapter = CustomAdapter(requireContext(),nd)
-            list.adapter = mCustomAdapter
+            listener.updateMemoList(md)
         }
         }
 

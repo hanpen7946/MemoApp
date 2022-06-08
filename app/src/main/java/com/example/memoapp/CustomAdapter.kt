@@ -12,8 +12,6 @@ import android.widget.*
 
 class CustomAdapter(context: Context, var Memolist: MutableList<MemoData>) : ArrayAdapter<MemoData>(context, 0, Memolist) {
     private val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-
-
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         //タップされたアイテムを格納
         val memo = Memolist[position]
@@ -38,11 +36,13 @@ class CustomAdapter(context: Context, var Memolist: MutableList<MemoData>) : Arr
                 title_ca?.setTextColor(Color.GRAY)
                 quantity_ca?.setTextColor(Color.GRAY)
                 price_ca?.setTextColor(Color.GRAY)
+                //価格入力の処理・とりまダイアログ
             } else{
                 title_ca?.paint?.flags = Paint.ANTI_ALIAS_FLAG
                 title_ca?.setTextColor(Color.BLACK)
                 quantity_ca?.setTextColor(Color.BLACK)
                 price_ca?.setTextColor(Color.BLACK)
+                //入力した価格消去の処理
             }
             notifyDataSetChanged()
         }

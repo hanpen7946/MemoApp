@@ -27,7 +27,6 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/CheckBox"
-        app:layout_constraintEnd_toStartOf="@+id/Quantity"
         app:layout_constraintStart_toEndOf="@+id/CheckBox"
         app:layout_constraintTop_toTopOf="@+id/CheckBox" />
 
@@ -41,7 +40,8 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/MemoTitle"
         app:layout_constraintEnd_toStartOf="@+id/Price"
-        app:layout_constraintTop_toTopOf="@+id/MemoTitle" />
+        app:layout_constraintTop_toTopOf="@+id/MemoTitle"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/Price"
