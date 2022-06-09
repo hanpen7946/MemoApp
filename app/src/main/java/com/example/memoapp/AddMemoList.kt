@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import android.widget.ListView
 import com.example.memoapp.databinding.ActivityMainBinding
 import com.example.memoapp.databinding.FragmentAddMemoListBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -28,14 +27,8 @@ class AddMemoList : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        try {
-            //MainActivity（呼び出し元）をListenerに変換する
             val mainActivity: MainActivity= activity as MainActivity
             listener = mainActivity
-        } catch (e: ClassCastException) {
-            throw ClassCastException((context.toString() +
-                    " must implement NoticeDialogListener"))
-        }
     }
     override fun onCreateView(
         inflater: LayoutInflater,
